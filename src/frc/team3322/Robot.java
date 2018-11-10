@@ -8,6 +8,7 @@
 package frc.team3322;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -33,6 +34,8 @@ public class Robot extends TimedRobot
     private Command autonomousCommand;
     private SendableChooser<Command> chooser = new SendableChooser<>();
 
+    private DigitalInput flag = new DigitalInput(0);
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -46,6 +49,11 @@ public class Robot extends TimedRobot
         SmartDashboard.putData("Auto mode", chooser);
     }
 
+    @Override
+    public void robotPeriodic()
+    {
+        SmartDashboard.putBoolean("Flag", flag.get());
+    }
     /**
      * This function is called once each time the robot enters Disabled mode.
      * You can use it to reset any subsystem information you want to clear when
