@@ -7,13 +7,10 @@
 
 package frc.team3322;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3322.commands.ExampleCommand;
@@ -37,9 +34,8 @@ public class Robot extends TimedRobot
     private Command autonomousCommand;
     private SendableChooser<Command> chooser = new SendableChooser<>();
 
-    private DigitalInput flag = new DigitalInput(0);
-    private Potentiometer pot = new AnalogPotentiometer(1);
-    private Encoder encoder = new Encoder(9, 8);
+    final int RobotDioProximityPort = 0;
+    private DigitalInput proximitySensor = new DigitalInput(RobotDioProximityPort);
 
     /**
      * This function is run when the robot is first started up and should be
@@ -57,9 +53,7 @@ public class Robot extends TimedRobot
     @Override
     public void robotPeriodic()
     {
-        SmartDashboard.putBoolean("Flag", flag.get());
-        SmartDashboard.putNumber("Pot", pot.get());
-        SmartDashboard.putNumber("Encoder", encoder.getRaw());
+        SmartDashboard.putBoolean("Proximity Sensor", proximitySensor.get());
     }
     /**
      * This function is called once each time the robot enters Disabled mode.
