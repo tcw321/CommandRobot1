@@ -7,10 +7,8 @@
 
 package frc.team3322;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.DigitalInput;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
@@ -37,8 +35,18 @@ public class Robot extends TimedRobot
     private Command autonomousCommand;
     private SendableChooser<Command> chooser = new SendableChooser<>();
 
-    private DigitalInput flag = new DigitalInput(0);
-    private Potentiometer pot = new AnalogPotentiometer(1);
+//    WPI_TalonSRX aMotor = new WPI_TalonSRX(4);
+    WPI_TalonSRX bMotor = new WPI_TalonSRX(5);
+//    WPI_TalonSRX cMotor = new WPI_TalonSRX(14);
+//    WPI_TalonSRX dMotor = new WPI_TalonSRX(15);
+    PowerDistributionPanel pdp = new PowerDistributionPanel();
+
+    private DigitalInput photo = new DigitalInput(0);
+    private DigitalInput hall = new DigitalInput(1);
+    private DigitalInput prox = new DigitalInput(2);
+    private Potentiometer pot = new AnalogPotentiometer(0);
+//    private Potentiometer pot2 = new AnalogPotentiometer(1);
+//    private Potentiometer pot3 = new AnalogPotentiometer(2);
     private Encoder encoder = new Encoder(9, 8);
 
     /**
@@ -48,6 +56,7 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit() 
     {
+
         oi = new OI();
         chooser.addDefault("Default Auto", new ExampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
@@ -57,9 +66,17 @@ public class Robot extends TimedRobot
     @Override
     public void robotPeriodic()
     {
-        SmartDashboard.putBoolean("Flag", flag.get());
+        SmartDashboard.putBoolean("photo", photo.get());
+        SmartDashboard.putBoolean("hall", hall.get());
+        SmartDashboard.putBoolean("prox", prox.get());
         SmartDashboard.putNumber("Pot", pot.get());
+ //       SmartDashboard.putNumber("Pot2", pot2.get());
+ //       SmartDashboard.putNumber("Pot3", pot3.get());
         SmartDashboard.putNumber("Encoder", encoder.getRaw());
+//        SmartDashboard.putNumber("Current4", pdp.getCurrent(4));
+
+//        SmartDashboard.putNumber("Current14", pdp.getCurrent(14));
+//       SmartDashboard.putNumber("Current15", pdp.getCurrent(15));
     }
     /**
      * This function is called once each time the robot enters Disabled mode.
@@ -136,7 +153,13 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic() 
     {
-        Scheduler.getInstance().run();
+//        aMotor.set(.5);
+        bMotor.set(.5);
+		SmartDashboard.putNumber("Current5", pdp.getCurrent(5));
+//        cMotor.set(.5);
+//        dMotor.set(.5);
+
+//       Scheduler.getInstance().run();
     }
 
     /**
