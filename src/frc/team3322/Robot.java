@@ -8,7 +8,8 @@
 package frc.team3322;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -34,9 +35,8 @@ public class Robot extends TimedRobot
     private Command autonomousCommand;
     private SendableChooser<Command> chooser = new SendableChooser<>();
 
-    final int RobotAnalogChannel = 0;
-    private AnalogPotentiometer potentiometer = new AnalogPotentiometer(RobotAnalogChannel);
-
+    WPI_TalonSRX motor = new WPI_TalonSRX(5);
+    PowerDistributionPanel pdp = new PowerDistributionPanel();
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -53,7 +53,7 @@ public class Robot extends TimedRobot
     @Override
     public void robotPeriodic()
     {
-        SmartDashboard.putNumber("Potentiometer", potentiometer.get());
+        SmartDashboard.putNumber("Current5", pdp.getCurrent(5));
     }
     /**
      * This function is called once each time the robot enters Disabled mode.
@@ -130,7 +130,8 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic() 
     {
-        Scheduler.getInstance().run();
+        motor.set(.5);
+
     }
 
     /**
