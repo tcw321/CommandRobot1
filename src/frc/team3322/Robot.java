@@ -7,7 +7,6 @@
 
 package frc.team3322;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,7 +28,7 @@ public class Robot extends TimedRobot
 {
 
     public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-    public static frc.team3322.OI oi;
+    public static OI oi;
 
     private Command autonomousCommand;
     private SendableChooser<Command> chooser = new SendableChooser<>();
