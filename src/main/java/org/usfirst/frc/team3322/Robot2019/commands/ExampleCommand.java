@@ -5,10 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.team3322.commands;
+package org.usfirst.frc.team3322.Robot2019.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.team3322.Robot;
+import org.usfirst.frc.team3322.Robot2019.Robot;
 
 /**
  * An example command.  You can replace me with your own command.
@@ -86,7 +86,7 @@ public class ExampleCommand extends Command
      * Called when the command ends because somebody called {@link #cancel()} or
      * another command shared the same requirements as this one, and booted it out. For example,
      * it is called when another command which requires one or more of the same
-     * subsystems is scheduled to run.
+     * org.usfirst.frc.team3322.Robot2019.subsystems is scheduled to run.
      * </p><p>
      * This is where you may want to wrap up loose ends, like shutting off a motor that was being
      * used in the command.

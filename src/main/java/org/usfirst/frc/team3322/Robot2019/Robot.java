@@ -5,15 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.team3322;
+package org.usfirst.frc.team3322.Robot2019;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team3322.commands.ExampleCommand;
+import org.usfirst.frc.team3322.Robot2019.commands.ExampleCommand;
 import frc.team3322.subsystems.ExampleSubsystem;
+
 
 
 /**

@@ -10,7 +10,7 @@
  * interface to the commands and command groups that allow control of the robot.
  */
 
-package frc.team3322;
+package org.usfirst.frc.team3322.Robot2019;
 
 public class OI 
 {
